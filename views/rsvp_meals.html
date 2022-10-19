@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+{{template "head"}}
+{{template "header"}}
+
+{{.DisplayName}}
+<form method="POST">
+    {{range .Guests}}
+    Meal selection for {{.}}
+    Chicken
+    Steak
+    {{end}}
+</form>
+
+
+
+{{/* <label class="block">
+    <span>
+        Guest(s)
+    </span>
+</label>
+<select class="single-select" name="guests">
+    {{range .}}
+    <option value="{{.DisplayName}}">{{.DisplayName}}</option>
+    {{end}}
+</select>
+
+{{range .}}
+{{if index .PlusOne "plusOne"}}
+Will you be bringing a guest?
+<input type="checkbox" />
+Name of guest:<input type="text">
+{{end}}
+{{range .Guests}}
+Meal selection for {{.}}
+Chicken
+Steak
+{{end}}
+{{end}} */}}
+
+<footer>
+    <script>
+        $(document).ready(function () {
+            $('.single-select').select2();
+        });
+    </script>
+</footer>
+
+</html>

@@ -1,0 +1,79 @@
+{{define "header"}}
+<header class="bg-amber-50 text-black">
+    <h1 style=" font-family: 'Tangerine' , serif; font-size: 48px;" class="py-4 text-center">
+        John Smith & Pocahontas</h1>
+    <p class="py-2 text-center">January 1, 1400 Boston, MA</p>
+    {{/* mobile */}}
+    <div id="mobile-menu" class="md:hidden py-4 text-center">
+        <ul>
+            <li><a href="/story"><button class="nav-btn-mobile nav-btn w-5/6">
+                        <span class="story-mobile"> Story</span>
+                    </button>
+                </a>
+            </li>
+            <li><a href="/party"><button class="nav-btn-mobile nav-btn w-5/6">
+                        <span class="party-mobile"> Party</span>
+                    </button>
+                </a>
+            </li>
+            <li><a href="/schedule"><button class="nav-btn-mobile nav-btn w-5/6">
+                        <span class="events-mobile"> Events</span>
+                    </button>
+                </a>
+            </li>
+            <li><a href="/rsvp"><button class="nav-btn-mobile nav-btn w-5/6">
+                        <span class="rsvp-mobile"> RSVP</span>
+                    </button>
+                </a>
+            </li>
+            <li><a href="/registry"><button class="nav-btn-mobile nav-btn w-5/6">
+                        <span class="registry-mobile"> Registry</span>
+                    </button>
+                </a>
+            </li>
+            <li><a href="/analytics"><button class="nav-btn-mobile nav-btn w-5/6">
+                        <span class="analytics-mobile"> Analytics</span>
+                    </button>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    {{/* desktop */}}
+    <div id="menu" class="hidden md:block md:py-4 md:text-center">
+        <ul>
+            <li><a href="/story"><button class="nav-btn story w-1/12">
+                        <span>Story</span>
+                    </button>
+                </a>
+            </li>
+            <li><a href="/party"><button class="nav-btn party w-1/12">
+                        <span>Party</span>
+                    </button>
+                </a>
+            </li>
+            <li><a href="/schedule"><button class="nav-btn events w-1/12">
+                        <span>Events</span>
+                    </button>
+                </a>
+            </li>
+            <li><a href="/rsvp"><button class="nav-btn rsvp w-1/12">
+                        <span>RSVP</span>
+                    </button>
+                </a>
+            </li>
+            <li><a href="/registry"><button class="nav-btn registry w-1/12">
+                        <span>Registry</span>
+                    </button>
+                </a>
+            </li>
+            <li><a href="/analytics"><button class="nav-btn analytics w-1/12">
+                        <span>Analytics</span>
+                    </button>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</header>
+{{end}}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div class="bg-amber-50">
+    {{template "head"}}
+    {{template "header"}}
+
+
+    {{/* {{.DisplayName}}
+    <form action="/rsvp/guests" method="POST">
+        <input type="hidden" id="id" name="id" value={{.ID}}>
+        {{range .Guests}}
+        <div>
+            <input type="checkbox" name="{{.}}" id="{{.}}"><label for="{{.}}">{{.}}</label>
+        </div>
+        {{end}}
+        {{range .Additional}}
+        <div>
+            <input type="checkbox">
+            <input type="text" placeholder="Guest Name">
+        </div>
+        {{end}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form> */}}
+
+
+    <div class="grid grid-cols-1 md:grid-cols-3 py-6">
+        <div class="hidden md:flex"></div>
+
+        <div class="md:col-start-2 col-end-2">
+            <div>
+                <select class="single-select w-96" name="guests">
+                    <option disabled selected value>Select your party</option>
+                    {{range .}}
+                    <option value="{{.DisplayName}}">{{.DisplayName}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="py-2">
+
+                <input type="checkbox" class="toggle toggle-lg" id="toggle" checked />
+
+
+            </div>
+            <div id="rsvp">
+                <div id="guests">
+                    {{template "card"}}
+                </div>
+
+                <div>
+                    <div class="divider"></div>
+                    <button onclick="addGuest()" class="btn">Add Guest</button>
+                </div>
+            </div>
+            <form action="/rsvp/verify" method="POST">
+                <div>
+                    <label for="pw">Password</label>
+                    <input type="text" name="pw" id="pw">
+                </div>
+            </form>
+            <p class="text-6xl text-center" id="yesEmoji">🥳</p>
+            <p class="text-6xl text-center" id="noEmoji" hidden>🥺</p>
+            <br>
+            <button onclick="" class="btn">Submit</button>
+        </div>
+
+
+        <div class="hidden md:flex"></div>
+    </div>
+
+
+</div>
+
+<footer>
+    <script>
+        $(document).ready(function () {
+            $('.single-select').select2();
+        });
+
+
+
+        function addGuest() {
+            var html = `
+            <br>
+            <div class="card w-96 bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <div class="block">
+                        <label>Name</label>&nbsp<input>
+                    </div>
+                    <div class="block">
+                        <label>Meal</label> &nbsp
+                        <select class="single-select" style="width: 75%">
+                            <option value=" chicken">chicken</option>
+                            <option value="steak">steak</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        `;
+
+
+
+            var card = document.createElement("div");
+            card.innerHTML = html;
+
+            document.getElementById("guests").appendChild(card);
+            $(document).ready(function () {
+                $('.single-select').select2();
+            });
+        }
+
+        var yesEmoji = document.getElementById('yesEmoji');
+        var noEmoji = document.getElementById('noEmoji');
+        var addGuests = document.getElementById('rsvp');
+        document.getElementById('toggle').onchange = function () {
+            addGuests.style.display = this.checked ? 'block' : 'none';
+            yesEmoji.hidden = !this.checked
+            noEmoji.hidden = this.checked
+        };
+    </script>
+
+</footer>
+
+</html>

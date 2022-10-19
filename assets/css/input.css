@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+}
+
+#menu ul {
+    list-style: none;
+}
+
+#menu li {
+    display: inline;
+    padding: 6px;
+}
+
+#mobile-menu li {
+    margin: 10px 0;
+}
+
+.nav-btn-mobile {
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all 0.5s;
+    border-radius: 10px;
+    position: relative;
+    outline-color: black;
+    outline-width: 0.2px;
+    outline-style: solid;
+}
+
+.nav-btn-mobile {
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all 0.5s;
+    border-radius: 10px;
+    position: relative;
+    outline-color: black;
+    outline-width: 0.2px;
+    outline-style: solid;
+}
+
+.nav-btn:hover span {
+    display: none
+}
+
+.story:hover:before,
+.story-mobile:before {
+    font-family: fontAwesome;
+    content: "\f004";
+}
+
+.registry:hover:before,
+.registry-mobile:before {
+    font-family: fontAwesome;
+    content: "\f06b";
+}
+
+.events:hover:before,
+.events-mobile::before {
+    font-family: fontAwesome;
+    content: "\f79f";
+}
+
+.analytics:hover:before,
+.analytics-mobile:before {
+    font-family: fontAwesome;
+    content: "\e473";
+}
+
+.party:hover:before,
+.party-mobile:before {
+    font-family: fontAwesome;
+    content: "\e533";
+}
+
+.rsvp:hover:before,
+.rsvp-mobile:before {
+    font-family: fontAwesome;
+    content: "\f0e0";
+}
