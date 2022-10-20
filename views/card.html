@@ -1,16 +1,31 @@
 {{define "card"}}
-<div class="card w-96 bg-base-100 shadow-xl">
+<div class="card bg-base-100 shadow-xl w-11/12" id="mealCard">
     <div class="card-body">
-        <div class="block">
-            <label>Name</label>&nbsp<input>
+        <div class="card-actions justify-end">
+            <button type="button" class="btn btn-square btn-sm" onclick="removeGuest(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
-        <div class="block">
-            <label>Meal</label> &nbsp
-            <select class="single-select" style="width: 75%">
-                <option value=" chicken">chicken</option>
-                <option value="steak">steak</option>
-            </select>
-        </div>
+        <input name="people[1][name]" type="text" placeholder="Guest Name" form="rsvp" class="
+        mt-0
+        block
+        w-full
+        px-0.5
+        border-0 border-b-2 border-gray-200
+        focus:ring-0 focus:border-black
+      " />
+        <select name="people[1][meal]" form="rsvp" class=" block
+        w-full
+        mt-0
+        px-0.5
+        border-0 border-b-2 border-gray-200
+        focus:ring-0 focus:border-black">
+            <option>Chicken</option>
+            <option>Steak</option>
+        </select>
     </div>
 </div>
 {{end}}

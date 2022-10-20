@@ -20,22 +20,29 @@ body {
 
 #menu li {
     display: inline;
-    padding: 6px;
+    padding: 8px;
 }
 
 #mobile-menu li {
     margin: 10px 0;
 }
 
-.nav-btn-mobile {
-    cursor: pointer;
-    padding: 0.5rem;
-    transition: all 0.5s;
-    border-radius: 10px;
-    position: relative;
-    outline-color: black;
-    outline-width: 0.2px;
-    outline-style: solid;
+.card {
+    margin: 0 auto;
+    /* Added */
+    float: none;
+    /* Added */
+    margin-bottom: 10px;
+    /* Added */
+}
+
+label {
+    vertical-align: middle;
+}
+
+
+input[type="radio"] {
+    vertical-align: middle;
 }
 
 .nav-btn-mobile {
@@ -49,41 +56,92 @@ body {
     outline-style: solid;
 }
 
-.nav-btn:hover span {
+.nav-btn-mobile {
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all 0.5s;
+    border-radius: 10px;
+    position: relative;
+    outline-color: black;
+    outline-width: 0.2px;
+    outline-style: solid;
+}
+
+
+.nav-btn {
+    position: relative;
+    display: inline-block;
+}
+
+
+.nav-btn:hover .textwrapper {
+    width: 100%;
+}
+
+.textwrapper {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    width: 0;
+    display: inline-block;
+    white-space: pre;
+    color: rgb(0, 0, 0);
+    transition: width 500ms;
+    border-bottom: 1px solid;
+    padding-bottom: 0.15em;
+}
+
+.textwrapper a {
+    color: inherit;
+}
+
+.active {
+    display: inline-block;
+    width: 100%;
+    display: inline-block;
+    white-space: pre;
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid;
+    padding-bottom: 0.15em;
+}
+
+
+
+/* .nav-btn:hover span {
     display: none
-}
+} */
 
-.story:hover:before,
+.story:before,
 .story-mobile:before {
     font-family: fontAwesome;
     content: "\f004";
 }
 
-.registry:hover:before,
+.registry:before,
 .registry-mobile:before {
     font-family: fontAwesome;
     content: "\f06b";
 }
 
-.events:hover:before,
+.events:before,
 .events-mobile::before {
     font-family: fontAwesome;
     content: "\f79f";
 }
 
-.analytics:hover:before,
+.analytics:before,
 .analytics-mobile:before {
     font-family: fontAwesome;
     content: "\e473";
 }
 
-.party:hover:before,
+.party:before,
 .party-mobile:before {
     font-family: fontAwesome;
     content: "\e533";
 }
 
-.rsvp:hover:before,
+.rsvp:before,
 .rsvp-mobile:before {
     font-family: fontAwesome;
     content: "\f0e0";

@@ -2,7 +2,7 @@
 module.exports = {
   content: ["./views/*.html"],
   plugins: [
-    // require('@tailwindcss/forms'),
+    require('@tailwindcss/forms'),
     require("daisyui")
   ],
   daisyui: {
