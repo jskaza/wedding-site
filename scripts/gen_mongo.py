@@ -10,15 +10,15 @@ db = client.wedding
 
 data = pd.read_csv("guest_list.csv",dtype={"displayName": str, "nGuests": int}).to_dict(orient="records")
 
-def genGuestsObj(entry):
-    guests = [{"name":"", "meal":""}]*entry["nGuests"]
-    return {"displayName": entry["displayName"], "guests":guests}
+# def genGuestsObj(entry):
+#     guests = [{"name":"", "meal":""}]*entry["nGuests"]
+#     return {"displayName": entry["displayName"], "guests":guests}
 
 
 
-to_upload = list(map(genGuestsObj, data))
+# to_upload = list(map(genGuestsObj, data))
 
 db.guests.delete_many({})
-db.guests.insert_many(to_upload)
+db.guests.insert_many(data)
     
 
