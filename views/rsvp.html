@@ -9,66 +9,70 @@
         <div class="hidden md:flex"></div>
 
         <div class="md:col-span-2">
-            <form action="/rsvp/guests" method="POST" id="rsvp" class="text-center">
+            <form action="/rsvp/confirm" method="POST" id="rsvp" class="text-center" content-type="application/json">
                 <div class="text-center">
-                    <select name="guests"
+                    <select required id="displayName" name="displayName"
                         class="text-center w-96 mt-0 px-0.5 border-0 border-b-2 border-gray-200  focus:ring-0 focus:border-black">
-                        <option disabled selected value>Select your party</option>
+                        <option disabled selected value>Select your group</option>
                         {{range .}}
                         <option value="{{.DisplayName}}">{{.DisplayName}}</option>
                         {{end}}
                     </select>
                 </div>
                 <br>
-                <span class="px-4">
-                    <input type="radio" name="rsvpOptions" value="yes" class="radio"> <label>Will be
-                        attending</label>
-                </span>
-                <span class="px-4">
-                    <input type="radio" name="rsvpOptions" value="no" class="radio"> <label>Will not be
-                        attending</label>
-                </span>
-
+                <div hidden id="response">
+                    <span class="px-4">
+                        <input type="radio" name="rsvpOptions" value="yes" class="radio"> <label>Will be
+                            attending</label>
+                    </span>
+                    <span class="px-4">
+                        <input type="radio" name="rsvpOptions" value="no" class="radio"> <label>Will not be
+                            attending</label>
+                    </span>
+                </div>
 
                 <div class="py-6">
                     <div id="yes" hidden>
-                        <div class="alert alert-success shadow-lg py-2">
-                            <div>
-                                <i class="fa-regular fa-circle-check"></i>
-                                <span>Please fill out a card below for each guest attending. Then, enter the password
-                                    included on the invitation and press submit.</span>
-                            </div>
+
+                        <div>
+                            <i class="fa-regular fa-circle-check text-green-600"></i>
+                            <span class="italic">Please fill out a card below for each guest attending.</span>
                         </div>
+
 
                         <div class="divider"><i class="fa-solid fa-heart"></i></div>
 
                         <div id="guests">
                             <div id="cards" class="grid grid-cols-1 md:grid-cols-2">
                                 {{template "card"}}
-                            </div>
-
-                            <div>
-                                <button type="button" onclick="addGuest()" class="btn">Add Guest</button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div id="no" hidden>
-                        <div class="alert alert-error shadow-lg">
-                            <div>
-                                <i class="fa-regular fa-circle-xmark"></i>
-                                <span>We're sorry you can't make it! Please enter the password included on
-                                    the invitation and press submit.</span>
+                                <button type="button" id="addButton" onclick="addGuest()"
+                                    class="card w-11/12 shadow-xl bg-slate-200 text-center">
+                                    <div>
+                                        Add Guest
+                                    </div>
+                                </button>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
 
 
-                <br>
+                <div id="no" hidden>
+                    <div>
+                        <i class="fa-regular fa-circle-xmark text-red-600"></i>
+                        <span class="italic">We're sorry you can't make it!</span>
+                    </div>
+                    <div class="divider"><i class="fa-solid fa-heart"></i></div>
+                </div>
 
-                <button type="submit" class="btn">Submit</button>
+
+
+                <br>
+                <div id="review" hidden>
+                    <button type="submit" class="btn" onclick="formJSON()">Review</button>
+                </div>
             </form>
 
 
@@ -76,135 +80,21 @@
 
 
 
+
     </div>
 
 
-    <div class="hidden md:flex"></div>
+    <div class=" hidden md:flex">
+    </div>
 </div>
 
 
 <footer>
-    <script>
-        function removeGuest(el) {
-            $(el).closest("#mealCard").remove();
-        };
-
-
-        {/*  function addGuest() {
-            var html = `
-            <br>
-            <div class="card w-1/2 bg-base-100 shadow-xl" id="mealCard">
-                <div class="card-body">
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-square btn-sm" id="x">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <input type="text" placeholder="Guest Name" class="
-                    mt-0
-                    block
-                    w-full
-                    px-0.5
-                    border-0 border-b-2 border-gray-200
-                    focus:ring-0 focus:border-black
-                  " />
-                    <select class=" block
-                    w-full
-                    mt-0
-                    px-0.5
-                    border-0 border-b-2 border-gray-200
-                    focus:ring-0 focus:border-black">
-                        <option>Chicken</option>
-                        <option>Steak</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        `;
-
-
-            { {/*  console.log(html.getElementById("x"));  */ }
-
-
-
-
-        let i = 2;
-        function addGuest() {
-
-            var html = `
-            
-            <div class="card w-11/12 bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-square btn-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <input name="people[${i}][name]" form="rsvp" type="text" placeholder="Guest Name" class="
-                    mt-0
-                    block
-                    w-full
-                    px-0.5
-                    border-0 border-b-2 border-gray-200
-                    focus:ring-0 focus:border-black
-                  " />
-                    <select form="rsvp" name="people[${i}][meal]" class=" block
-                    w-full
-                    mt-0
-                    px-0.5
-                    border-0 border-b-2 border-gray-200
-                    focus:ring-0 focus:border-black">
-                        <option>Chicken</option>
-                        <option>Steak</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        `;
-
-
-
-            var card = document.createElement("div");
-            card.innerHTML = html;
-
-            document.getElementById("cards").appendChild(card);
-            window.scrollTo(0, document.body.scrollHeight, 'smooth');
-            i++;
-        }
-
-        var yes = document.getElementById('yes');
-        var no = document.getElementById('no');
-        var addGuests = document.getElementById('rsvp');
-        $(document).ready(function () {
-            $('#rsvp').change(function () {
-                selectedValue = $("input[name='rsvpOptions']:checked").val();
-                if (selectedValue == "no") {
-                    no.hidden = false
-                    yes.hidden = true
-                } else {
-                    no.hidden = true
-                    yes.hidden = false
-                }
-            });
-        });
-        $(document).ready(function () {
-            $("[href]").each(function () {
-                if (this.href == window.location.href) {
-                    $(this).parents('span').fadeOut();
-                    $(this).addClass("active");
-                }
-            });
-        });
-    </script>
-
+    <script src="/assets/js/rsvp_display.js"></script>
+    <script src="/assets/js/add_guest.js"></script>
+    <script src="/assets/js/remove_guest.js"></script>
+    <script src="/assets/js/serialize_json.js"></script>
+    <script src="/assets/js/submit_form.js"></script>
 </footer>
 
 </html>

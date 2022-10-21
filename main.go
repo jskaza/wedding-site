@@ -10,6 +10,7 @@ func main() {
 	router.LoadHTMLGlob("./views/*.html")
 	router.Static("./assets/css", "./assets/css")
 	router.Static("./assets/img", "./assets/img")
+	router.Static("./assets/js", "./assets/js")
 
 	public := router.Group("/")
 	// private := router.Group("/")

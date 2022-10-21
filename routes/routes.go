@@ -14,5 +14,5 @@ func PrivateRoutes(g *gin.RouterGroup) {
 	g.GET("/party", controllers.PartyGetHandler())
 	g.GET("/schedule", controllers.ScheduleGetHandler())
 	g.GET("/rsvp", controllers.RSVPGetHandler())
-	g.POST("/rsvp/guests", controllers.RSVPPostHandler())
+	g.POST("/rsvp/confirm", controllers.RSVPPostHandler())
 }
