@@ -1,1 +1,2 @@
-![demo]("wedding_site_demo.gif)
+![demo1](./assets/img/screenshot1.png)
+![demo2](./assets/img/screenshot2.png)
